@@ -6,7 +6,18 @@ import 'package:flutter/material.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await Firebase.initializeApp();
+  if (kIsWeb) {
+    await Firebase.initializeApp(
+        options: const FirebaseOptions(
+            apiKey: "AIzaSyAY7KCSiv7CBD2J0nxwkh_h8eLg3Qy6d94",
+            appId: "1:429754200720:web:cf3c7412e569ab533a1e15",
+            messagingSenderId: "429754200720",
+            projectId: "gogo-booking",
+            storageBucket: "gogo-booking.appspot.com"));
+  } else {
+    await Firebase.initializeApp();
+  }
+
   runApp(const MyApp());
 }
 
